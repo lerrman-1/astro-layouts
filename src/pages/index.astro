@@ -1,8 +1,15 @@
 ---
-import "../styles/global.css";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
-<BaseLayout>
-  <slot />
+<BaseLayout
+  title="Home Page"
+  description="Welcome to my awesome Astro website!"
+>
+  <h1 class="text-3xl font-bold mb-4">Welcome to My Astro Site!</h1>
+  <p class="mb-2">
+    This is the content of the home page. It's rendered inside the BaseLayout,
+    so the Header and Footer are automatically included.
+  </p>
+  <p>You can add more Astro components or Markdown content here.</p>
 </BaseLayout>
