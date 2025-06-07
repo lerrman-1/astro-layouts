@@ -1,0 +1,36 @@
+---
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+// Define props that can be passed to the layout
+export interface Props {
+  title?: string;
+  description?: string;
+}
+
+// Set default values for props if not provided
+const { title = "Astro Landing Page", description = "Built with Astro" } =
+  Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+  </head>
+  <body
+    class="flex flex-col min-h-screen bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 antialiased"
+  >
+    <Header />
+    <main class="flex-grow py-6 px-4 sm:px-6 lg:px-8">
+      <slot />
+      {/* Page-specific content will be injected here */}
+    </main>
+    <Footer />
+  </body>
+</html>
