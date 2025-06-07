@@ -3,33 +3,127 @@
 ---
 
 <header
-  class="flex justify-between items-center py-4 px-6 sm:px-8 bg-slate-100 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700"
+  class="relative flex justify-between items-center py-4 px-6 sm:px-8 bg-slate-100 dark:bg-slate-800 border-b border-slate-300 dark:border-slate-700 z-30"
 >
   <a
     href="/"
     class="text-2xl font-bold text-slate-700 dark:text-slate-200 hover:text-slate-900 dark:hover:text-slate-50"
     >My Astro Site</a
   >
-  <nav>
+
+  <!-- Desktop Navigation -->
+  <nav class="hidden md:flex items-center space-x-4 sm:space-x-6">
     <a
       href="/"
-      class="ml-4 sm:ml-6 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 hover:underline"
+      class="text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 hover:underline"
       >Home</a
     >
     <a
       href="/about"
-      class="ml-4 sm:ml-6 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 hover:underline"
+      class="text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 hover:underline"
       >About</a
     >
     <a
-      href="/gallery"
-      class="ml-4 sm:ml-6 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 hover:underline"
-      >Gallery</a
+      href="/blog"
+      class="text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 hover:underline"
+      >Blog</a
     >
     <a
       href="/contact"
-      class="ml-4 sm:ml-6 text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 hover:underline"
+      class="text-slate-600 dark:text-slate-300 hover:text-slate-800 dark:hover:text-slate-100 hover:underline"
       >Contact</a
     >
   </nav>
+
+  <!-- Mobile Menu Button -->
+  <div class="md:hidden">
+    <button
+      id="menu-toggle"
+      type="button"
+      class="inline-flex items-center justify-center p-2 rounded-md text-slate-500 dark:text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-slate-500"
+      aria-controls="mobile-menu"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <!-- Hamburger Icon -->
+      <svg
+        id="icon-open"
+        class="block h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"></path>
+      </svg>
+      <!-- Close Icon (X) -->
+      <svg
+        id="icon-close"
+        class="hidden h-6 w-6"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        aria-hidden="true"
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M6 18L18 6M6 6l12 12"></path>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Mobile Menu (dropdown) -->
+  <div
+    id="mobile-menu"
+    class="hidden md:hidden absolute top-full left-0 right-0 w-full bg-slate-100 dark:bg-slate-800 border-t border-slate-200 dark:border-slate-700 shadow-lg z-20"
+  >
+    <nav class="flex flex-col py-2">
+      <a
+        href="/"
+        class="block px-6 py-3 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 w-full"
+        >Home</a
+      >
+      <a
+        href="/about"
+        class="block px-6 py-3 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 w-full"
+        >About</a
+      >
+      <a
+        href="/blog"
+        class="block px-6 py-3 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 w-full"
+        >Blog</a
+      >
+      <a
+        href="/contact"
+        class="block px-6 py-3 text-slate-700 dark:text-slate-200 hover:bg-slate-200 dark:hover:bg-slate-700 w-full"
+        >Contact</a
+      >
+    </nav>
+  </div>
 </header>
+
+<script>
+  const menuToggle = document.getElementById("menu-toggle");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const iconOpen = document.getElementById("icon-open");
+  const iconClose = document.getElementById("icon-close");
+
+  if (menuToggle && mobileMenu && iconOpen && iconClose) {
+    menuToggle.addEventListener("click", () => {
+      const isExpanded =
+        menuToggle.getAttribute("aria-expanded") === "true" || false;
+      menuToggle.setAttribute("aria-expanded", String(!isExpanded));
+      mobileMenu.classList.toggle("hidden");
+      iconOpen.classList.toggle("hidden");
+      iconClose.classList.toggle("hidden");
+    });
+  }
+</script>
