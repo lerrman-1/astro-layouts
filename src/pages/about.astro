@@ -1,4 +1,6 @@
 ---
+import { Image } from "astro:assets";
+import lerrmanImage from "../assets/lerrman.jpg";
 import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 
@@ -6,13 +8,32 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="About Us"
   description="Learn more about our company and team."
 >
-  <h1 class="text-3xl font-bold mb-4">About Us</h1>
-  <p class="mb-2">
-    This is the about page. We are a company dedicated to creating amazing web
-    experiences with Astro!
-  </p>
-  <p>
-    Here you can share more details about your mission, vision, and the team
-    behind your awesome site.
-  </p>
+  <!-- <h1 class="text-3xl font-bold mb-4">About Us</h1> -->
+  <!-- Nuevo contenedor para centrar verticalmente todo el contenido de la página -->
+  <div class="flex flex-col justify-center items-center flex-grow">
+    <div class="w-full max-w-4xl px-4">
+      <!-- Contenedor para el contenido con ancho máximo y padding -->
+      <h1 class="text-3xl font-bold mb-8 text-center md:text-left">About Us</h1>
+      <div class="flex flex-col md:flex-row gap-8 items-center">
+        <div class="md:w-3/5 text-left">
+          <p class="mb-4">
+            Here you can share more details about your mission, vision, and the
+            team behind your awesome site.
+          </p>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia,
+            aliquam doloribus excepturi dolores ullam rem aspernatur explicabo,
+            maiores quibusdam numquam deleniti reiciendis provident iste aperiam
+            architecto! Ab ipsa recusandae totam aspernatur saepe excepturi
+            consectetur voluptate illum voluptas illo, facilis quisquam, ullam,
+            voluptatum quo neque similique eaque unde mollitia tenetur nostrum
+            eveniet! Repellat error omnis sequi corporis nisi!
+          </p>
+        </div>
+        <div class="md:w-2/5 flex justify-center items-center">
+          <Image src={lerrmanImage} alt="retrato de lerrman" />
+        </div>
+      </div>
+    </div>
+  </div>
 </BaseLayout>
